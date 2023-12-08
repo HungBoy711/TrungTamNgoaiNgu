@@ -1,8 +1,14 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using TrungTamNgoaiNgu.Models;
 
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddRazorPages()
+    .AddRazorRuntimeCompilation();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
+builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connection));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,6 +26,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.MapDefaultControllerRoute();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

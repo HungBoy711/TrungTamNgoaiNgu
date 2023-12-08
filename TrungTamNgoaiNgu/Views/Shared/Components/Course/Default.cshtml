@@ -1,0 +1,38 @@
+﻿@using TrungTamNgoaiNgu.Models;
+@model IList<Course>;
+
+<!-- Courses Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class=" mb-3">
+            <h3>Khoá học phổ biến</h3>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="rounded overflow-hidden mb-2">
+                        <img class="img-fluid" src="img/course-1.jpg" alt="">
+                        <div class="bg-secondary p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-users text-primary mr-2"></i>@item.StudentCount<h7> Học sinh</h7></small>
+                                <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>@item.LearnTime</small>
+                            </div>
+                            <a class="h5" href="">@item.CourseName</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 style="padding-top:10px" class="m-0"><i class="fa fa-star text-primary mr-2"></i>@item.Star</h6>
+                                    <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }  
+        </div>
+        <div class="text-center mb-3">
+            <a href=""> >> Xem tất cả các khoá học << </a>
+        </div>
+    </div>
+</div>
+<!-- Courses End -->
